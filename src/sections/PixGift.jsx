@@ -1,0 +1,14 @@
+import { useEffect, useState } from 'react';
+import { Copy, Heart } from 'lucide-react';
+import QRCode from 'qrcode';
+import { buildPix, validPixConfig } from '../utils/pix';
+import { money } from '../components/GiftCard';
+export default function PixGift({ config }) {
+  const suggested = config?.amounts?.length ? config.amounts : [50,100,200];
+  const [amount,setAmount] = useState(suggested[0]), [qr,setQr] = useState(''), [copied,setCopied] = useState(false), [copyError,setCopyError] = useState('');
+  let code = '', error = ''; const enabled = validPixConfig(config);
+  if (enabled) { try { code = buildPix(config,amount); } catch(err) { error = err.message; } }
+  useEffect(() => { let current = true; setQr(''); setCopied(false); setCopyError(''); if (code) QRCode.toDataURL(code, { width:300, margin:4, errorCorrectionLevel:'M' }).then(value => { if (current) setQr(value); }).catch(() => { if(current) setCopyError('Não foi possível gerar o QR Code. Use o código Copia e Cola.'); }); return () => { current = false; }; }, [code]);
+  async function copy() { try { await navigator.clipboard.writeText(code); setCopied(true); } catch { setCopyError('Não foi possível copiar automaticamente. Selecione o código abaixo e copie.'); } }
+  return <div className="pix-gift"><Heart size={28} strokeWidth={1}/><h3>Um presente para nossa nova história</h3><p>Sua presença já é um presente muito especial para nós. Mas, se desejar contribuir com carinho para o início da nossa vida juntos, preparamos também esta opção.</p>{!enabled ? <div className="empty"><p>A opção Pix ainda está sendo preparada pelos noivos.</p></div> : <>{config.message && <p>{config.message}</p>}<div className="amounts" aria-label="Valores sugeridos">{suggested.map(value => <button type="button" key={value} className={Number(amount)===value ? 'active' : ''} aria-pressed={Number(amount)===value} onClick={() => setAmount(value)}>{money(value)}</button>)}</div><label className="custom-amount">Ou escolha outro valor (R$)<input type="number" min="0.01" max="999999.99" step="0.01" value={amount} onChange={e => setAmount(e.target.value)} inputMode="decimal"/></label>{error && <p className="error" role="alert">{error}</p>}{code && <>{qr && <img className="pix-qr" src={qr} width="300" height="300" alt={`QR Code Pix de ${money(Number(amount))} para ${config.name}`}/>}<p>Recebedor: <strong>{config.name}</strong> · {config.city}</p><label>Pix Copia e Cola<textarea readOnly value={code} rows={4} onFocus={e => e.target.select()}/></label><button type="button" className="button" onClick={copy}><Copy size={16}/>{copied ? 'Código copiado!' : 'Copiar código Pix'}</button><p role="status">{copyError || (copied ? 'Cole o código no aplicativo do seu banco.' : '')}</p><small className="privacy">Confira o nome do recebedor e o valor no aplicativo do banco antes de pagar. Este site não recebe confirmação de pagamento.</small></>}</>}</div>;
+}

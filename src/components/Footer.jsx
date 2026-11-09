@@ -1,0 +1,2 @@
+import { wedding, navigation } from '../data/wedding';
+export default function Footer() { return <footer><a href="#inicio" className="footer-names">{wedding.names}</a><p className="eyebrow">{wedding.date}</p><p>Feito com amor para celebrar o nosso para sempre.</p><nav aria-label="Navegação do rodapé">{[...navigation.filter(([id]) => ['historia','celebracao','presentes'].includes(id)), ['confirmacao','Confirmar presença']].map(([id,label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav><span className="footer-mark" aria-hidden="true">J & P</span></footer>; }
