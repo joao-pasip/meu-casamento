@@ -29,7 +29,7 @@ Porque, quando Deus é o autor de uma história, nem mesmo 600 km de distância 
       "width": 1079,
       "height": 1135,
       "alt": "Nosso primeiro contato pelo Instagram",
-      "caption": "Nosso primeiro contato pelo Instagram em 31 de setembro de 2026. Um relacionamento que nos conduziria ao Céu e nos faria crescer tanto diante do amor de Deus não poderia iniciar sem traços de eternidade."
+      "caption": "Nosso primeiro contato pelo Instagram em 31 de agosto de 2025. Um relacionamento que nos conduziria ao Céu e nos faria crescer tanto diante do amor de Deus não poderia iniciar sem traços de eternidade."
     },
     {
       "src": "/fotos/cs_02.jpeg",
