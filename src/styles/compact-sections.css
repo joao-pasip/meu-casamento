@@ -1,0 +1,14 @@
+.card-carousel-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:4px 2px 16px;position:relative;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.card-carousel-track>*{flex:0 0 calc((100% - 22px)/2);min-width:0;scroll-snap-align:start}
+.card-carousel-track .recommendation-card{margin:0}
+.card-carousel-track .location-card{margin:0}
+.carousel-navigation{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:12px;font-size:12px;color:var(--taupe)}
+.carousel-navigation button{border:1px solid var(--line);border-radius:50%;background:var(--paper)}
+.beauty-filters{justify-content:center;margin-bottom:22px}
+.beauty-filters label{max-width:340px;width:100%}
+.gift-search{flex:1}
+.gift-search input{width:100%;min-height:45px;padding:10px 12px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink)}
+.gift-results{font-size:12px;color:var(--taupe);margin:18px 0;scroll-margin-top:100px}
+.gift-pagination{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:28px;font-size:12px}
+.gift-pagination .button{min-width:105px}
+@media(max-width:640px){.card-carousel-track{gap:14px}.card-carousel-track>*{flex-basis:90%}.card-carousel-track:has(>:only-child)>*{flex-basis:100%}.card-carousel-track .location-card h3{font-size:28px}.filters .gift-search{flex:1 1 100%}.gift-pagination{gap:10px}.gift-pagination .button{min-width:85px;padding:10px 12px}.gift-results{scroll-margin-top:85px}}
