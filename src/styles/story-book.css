@@ -1,5 +1,5 @@
 .book-intro{text-align:center;color:var(--taupe);font-family:var(--serif);font-size:25px;line-height:1.4;max-width:520px;margin:-10px auto 20px}
-.book-toolbar{display:flex;justify-content:center;margin-bottom:25px}.book-toolbar button{display:inline-flex;gap:9px;align-items:center;min-height:44px}
+.book-toolbar{display:flex;justify-content:center;margin:22px 0 0}.book-toolbar button{display:inline-flex;gap:9px;align-items:center;min-height:44px}
 .story-book{max-width:960px;margin:auto}.book-spread{display:grid;grid-template-columns:1fr 1fr;border:1px solid #d8cdb9;border-radius:3px 9px 9px 3px;background:#f9f5eb;box-shadow:0 3px 0 #e5dbcb,0 6px 0 #f5eee1,0 8px 0 #ddd1bd,0 18px 42px #41443212;animation:book-arrive .32s ease-out}
 .book-page{position:relative;padding:46px 40px 54px;min-height:440px;background-image:radial-gradient(ellipse at top,#fffdf8a8,transparent 75%);color:var(--ink)}
 .book-page-left{border-right:1px solid #d8cdb9;background-color:#f6f1e6;box-shadow:inset -12px 0 18px -18px #78634a80}.book-page-right{box-shadow:inset 12px 0 18px -18px #78634a80}

@@ -43,7 +43,6 @@ export default function OurStory() {
   }
   return <Section id="historia" eyebrow="Escrito pela Providência" title="Nossa história">
     <p className="book-intro">O começo do nosso para sempre, um capítulo de cada vez.</p>
-    <div className="book-toolbar"><button type="button" className="text-button" aria-pressed={complete} onClick={() => setComplete(value => !value)}><BookOpen size={16}/>{complete ? 'Voltar ao livro' : 'Ler a história completa'}</button></div>
     {complete ? <div className="story story-complete">{paragraphs.map((text, i) => <p key={i}>{text}</p>)}</div> : <div className="story-book" role="region" aria-label="Livro da nossa história" onKeyDown={event => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); turn(event.key === 'ArrowLeft' ? -1 : 1); }
     }}>
@@ -59,6 +58,7 @@ export default function OurStory() {
       <nav className="book-navigation" aria-label="Páginas da nossa história"><button type="button" className="book-arrow" disabled={position === 0} onClick={() => turn(-1)} aria-label={mobile ? 'Página anterior' : 'Capítulo anterior'}><ChevronLeft size={18}/><span>Anterior</span></button><span className="book-progress" aria-live="polite">{mobile ? `Página ${position + 1} de ${total}` : `Capítulo ${index + 1} de ${chapters.length}`}</span><button type="button" className="book-arrow" disabled={position === total - 1} onClick={() => turn(1)} aria-label={mobile ? 'Próxima página' : 'Próximo capítulo'}><span>Próximo</span><ChevronRight size={18}/></button></nav>
       <div className="book-chapters" role="group" aria-label="Ir para um capítulo">{chapters.map((item, i) => <button type="button" key={item.title} aria-label={`Capítulo ${i + 1}: ${item.title}`} aria-current={index === i ? 'step' : undefined} onClick={() => move(i)}>{numerals[i]}</button>)}</div>
     </div>}
+    <div className="book-toolbar"><button type="button" className="text-button" aria-pressed={complete} onClick={() => setComplete(value => !value)}><BookOpen size={16}/>{complete ? 'Voltar ao livro' : 'Ler a história completa'}</button></div>
     {wedding.story.provisional && <p className="muted">Este espaço está sendo preparado pelos noivos.</p>}
   </Section>;
 }
